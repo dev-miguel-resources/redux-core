@@ -1,0 +1,1 @@
+// middlewares, redux-thunk, debugger, combine reducers, store

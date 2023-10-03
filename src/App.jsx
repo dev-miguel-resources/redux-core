@@ -6,7 +6,7 @@ import BalanceDisplay from './atoms/BalanceDisplay'
 function App() {
   return (
     <>
-      <h1>The React-Redux Bank Example</h1>
+      <h1>🏦 The React-Redux Bank Example ⚛️</h1>
       <CreateCustomer />
       <Customer />
       <AccountOperations />
