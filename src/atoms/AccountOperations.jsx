@@ -64,7 +64,7 @@ const AccountOperations = () => {
         </div>
 
         <div>
-          <span>Pay back $x</span>
+          <span>Pay back $</span>
           <button onClick={handlePayLoan}>Pay loan</button>
         </div>
       </div>
