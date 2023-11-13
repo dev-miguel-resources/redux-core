@@ -9,7 +9,7 @@ function formatCurrency(value) {
 }
 
 // VERSION CON REACT-REDUX DE MANERA NATIVA SIN HOOKS
-// const BalanceDisplay = ({ balance, createCustomer }) => ( con mapDispatchToProps
+// const BalanceDisplay = ({ balance, createCustomer }) => con mapDispatchToProps
 const BalanceDisplay = ({ balance }) => (
   <div className="balance">{formatCurrency(balance)}</div>
 )

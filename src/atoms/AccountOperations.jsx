@@ -1,4 +1,11 @@
 import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  deposit,
+  withdraw,
+  requestLoan,
+  payLoan,
+} from '../redux/features/accounts/account.reducer'
 
 const AccountOperations = () => {
   const [depositAmount, setDepositAmount] = useState('')
@@ -7,10 +14,38 @@ const AccountOperations = () => {
   const [loanPurpose, setLoanPurpose] = useState('')
   const [currency, setCurrency] = useState('USD')
 
-  function handleDeposit() {}
-  function handleWithdrawal() {}
-  function handleRequestLoan() {}
-  function handlePayLoan() {}
+  const dispatch = useDispatch()
+  const {
+    loan: currentLoan,
+    loanPurpose: currentLoanPurpose,
+    isLoading,
+  } = useSelector((store) => store.account)
+
+  // functions
+  function handleDeposit() {
+    if (!depositAmount) return
+
+    dispatch(deposit(depositAmount, currency))
+    setDepositAmount('')
+    setCurrency('USD')
+  }
+
+  function handleWithdrawal() {
+    if (!withdrawalAmount) return
+    dispatch(withdraw(withdrawalAmount))
+    setWithdrawalAmount('')
+  }
+
+  function handleRequestLoan() {
+    if (!loanAmount || !loanPurpose) return
+    dispatch(requestLoan(loanAmount, loanPurpose))
+    setLoanAmount('')
+    setLoanPurpose('')
+  }
+
+  function handlePayLoan() {
+    dispatch(payLoan())
+  }
 
   return (
     <>
@@ -32,7 +67,9 @@ const AccountOperations = () => {
             <option value="GBP">British Pound</option>
           </select>
 
-          <button onClick={handleDeposit}>Deposit {depositAmount}</button>
+          <button onClick={handleDeposit} disabled={isLoading}>
+            {isLoading ? 'Converting...' : `Deposit ${depositAmount}`}
+          </button>
         </div>
 
         <div>
@@ -64,7 +101,9 @@ const AccountOperations = () => {
         </div>
 
         <div>
-          <span>Pay back $</span>
+          <span>
+            Pay back $ {currentLoan} ({currentLoanPurpose})
+          </span>
           <button onClick={handlePayLoan}>Pay loan</button>
         </div>
       </div>
