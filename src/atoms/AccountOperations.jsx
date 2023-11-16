@@ -5,7 +5,7 @@ import {
   withdraw,
   requestLoan,
   payLoan,
-} from '../redux/features/accounts/account.reducer'
+} from '../redux/features/accounts/account.slice'
 
 const AccountOperations = () => {
   const [depositAmount, setDepositAmount] = useState('')

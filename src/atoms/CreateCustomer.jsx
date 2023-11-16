@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { createCustomer } from '../redux/features/customers/customer.reducer'
+import { createCustomer } from '../redux/features/customers/customer.slice'
 
 // VERSION CON REDUX-CORE CON HOOKS
 const CreateCustomer = () => {
